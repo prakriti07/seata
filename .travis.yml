@@ -16,6 +16,7 @@ install: true
 
 before_script:
   - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
+    sudo apt-get update;
     sudo apt-get install openjdk-11-jdk;
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64;
     export PATH=$JAVA_HOME:$PATH;
