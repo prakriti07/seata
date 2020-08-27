@@ -15,14 +15,13 @@ cache:
 install: true
 
 before_script:
-  - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
-    sudo apt-get update;
-    sudo apt-get install openjdk-11-jdk;
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64;
-    export PATH=$JAVA_HOME:$PATH;
-    fi
   - if [ "$TRAVIS_JDK_VERSION" == "openjdk8" ]; then
     export IMAGE_NAME="openjdk:8u212-jre-alpine";
+    if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
+    sudo apt-get install openjdk-8-jdk;
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-arm64;
+    export PATH=$JAVA_HOME:$PATH;
+    fi
     fi
   - if [ "$TRAVIS_JDK_VERSION" == "openjdk11" ]; then
     export IMAGE_NAME="openjdk:11-jre-stretch";
